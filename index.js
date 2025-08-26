@@ -124,3 +124,44 @@ function showErrorOverlay(errorText, suggestion) {
         container?.remove();
     }, 15000);
 }
+
+function addSettingsUI() {
+    const settingsHtml = `
+    <div id="vertin-tips-settings">
+        <div class="inline-drawer">
+            <div id="vertin-tips-header" class="inline-drawer-toggle inline-drawer-header">
+                <b>报错检测设置</b>
+                <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
+            </div>
+            <div id="vertin-tips-content" class="inline-drawer-content" style="display: none;">
+                <div style="padding: 10px;">
+                    <div style="margin-bottom: 10px;">
+                        <label class="checkbox_label">
+                            <input id="kktips-enable-fetch-error" type="checkbox" checked />
+                            <span>启用 HTTP 错误捕获</span>
+                        </label>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label class="checkbox_label">
+                            <input id="kktips-enable-promise-error" type="checkbox" checked />
+                            <span>启用未处理 Promise 异常捕获</span>
+                        </label>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label class="checkbox_label">
+                            <input id="kktips-enable-overlay" type="checkbox" checked />
+                            <span>显示错误弹窗提示</span>
+                        </label>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label for="kktips-popup-time">错误提示保留时间（秒）:</label>
+                        <input id="kktips-popup-time" type="number" value="15" min="5" max="60" style="width: 60px; margin-left: 5px;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`;
+
+    // 添加到扩展设置面板
+    $('#extensions_settings').append(settingsHtml);
+    }
